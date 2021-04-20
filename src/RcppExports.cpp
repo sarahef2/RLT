@@ -41,6 +41,22 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// EofVar_S
+List EofVar_S(arma::umat& ObsTrack, arma::cube& Pred, arma::cube& Pred_TV, arma::uvec& C, int usecores, int verbose);
+RcppExport SEXP _RLT_EofVar_S(SEXP ObsTrackSEXP, SEXP PredSEXP, SEXP Pred_TVSEXP, SEXP CSEXP, SEXP usecoresSEXP, SEXP verboseSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::umat& >::type ObsTrack(ObsTrackSEXP);
+    Rcpp::traits::input_parameter< arma::cube& >::type Pred(PredSEXP);
+    Rcpp::traits::input_parameter< arma::cube& >::type Pred_TV(Pred_TVSEXP);
+    Rcpp::traits::input_parameter< arma::uvec& >::type C(CSEXP);
+    Rcpp::traits::input_parameter< int >::type usecores(usecoresSEXP);
+    Rcpp::traits::input_parameter< int >::type verbose(verboseSEXP);
+    rcpp_result_gen = Rcpp::wrap(EofVar_S(ObsTrack, Pred, Pred_TV, C, usecores, verbose));
+    return rcpp_result_gen;
+END_RCPP
+}
 // ForestKernelUni_Self
 List ForestKernelUni_Self(arma::field<arma::uvec>& NodeType, arma::field<arma::uvec>& SplitVar, arma::field<arma::vec>& SplitValue, arma::field<arma::uvec>& LeftNode, arma::field<arma::uvec>& RightNode, arma::field<arma::vec>& NodeSize, arma::mat& X, arma::uvec& Ncat, int usecores, int verbose);
 RcppExport SEXP _RLT_ForestKernelUni_Self(SEXP NodeTypeSEXP, SEXP SplitVarSEXP, SEXP SplitValueSEXP, SEXP LeftNodeSEXP, SEXP RightNodeSEXP, SEXP NodeSizeSEXP, SEXP XSEXP, SEXP NcatSEXP, SEXP usecoresSEXP, SEXP verboseSEXP) {
@@ -208,6 +224,7 @@ END_RCPP
 static const R_CallMethodDef CallEntries[] = {
     {"_RLT_ClaForestMultiFit", (DL_FUNC) &_RLT_ClaForestMultiFit, 10},
     {"_RLT_EofVar", (DL_FUNC) &_RLT_EofVar, 5},
+    {"_RLT_EofVar_S", (DL_FUNC) &_RLT_EofVar_S, 6},
     {"_RLT_ForestKernelUni_Self", (DL_FUNC) &_RLT_ForestKernelUni_Self, 10},
     {"_RLT_ForestKernelUni_Cross", (DL_FUNC) &_RLT_ForestKernelUni_Cross, 12},
     {"_RLT_RegForestUniFit", (DL_FUNC) &_RLT_RegForestUniFit, 10},
